@@ -6,20 +6,20 @@
 {% block body %}
 
     <header class="header">
-        <div class="searchbar d-flex">
-            <button class="btn btn-outline-dark ms-4 me-4">Menu</button>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
         <nav class="navbar navbar-expand-lg">
+          <div class="menubtn"><button class="btn btn-outline-dark">Menu</button></div>
             <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler mt-2 mx-auto me-0" type="button" data-bs-toggle="collapse" data-bs-target="#nbSC" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav">
+              <div class="collapse navbar-collapse" id="nbSC">
+                <div class="navbar-nav mt-2">
+                  <div class="searchbar d-flex me-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                   <a class="nav-link" href="#">Features</a>
                   <a class="nav-link" href="#">Pricing</a>
