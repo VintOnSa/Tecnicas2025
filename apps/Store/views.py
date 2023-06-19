@@ -1,6 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import *
+from django.conf import settings
+import os
 
 # Create your views here.
 
 def cargarInicio(request):
-    return render(request, "index.html")
+    products = Product.objects.all()
+    return render(request, "index.html", {"Prod": products})
+
+
+def cAddProd(request):
+    return render(request, "AddProd.html")

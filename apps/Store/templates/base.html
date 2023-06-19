@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geologica">
     {% block head %}
@@ -12,6 +11,30 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+          <div class="menubtn"><button class="btn btn-outline-dark">Menu</button></div>
+            <div class="container-fluid mx-auto ms-3">
+              <button class="navbar-toggler mt-2 mx-auto me-4" type="button" data-bs-toggle="collapse" data-bs-target="#nbSC" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="nbSC">
+                <div class="navbar-nav mt-2">
+                  <div class="searchbar d-flex me-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link disabled">Disabled</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
     
     {% block body %}
     

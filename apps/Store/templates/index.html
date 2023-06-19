@@ -1,40 +1,34 @@
 {% extends './base.html' %}
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
 {% block title %}Inicio{% endblock %}
 
 {% block body %}
 
-    <header class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="menubtn"><button class="btn btn-outline-dark">Menu</button></div>
-            <div class="container-fluid">
-              <button class="navbar-toggler mt-2 mx-auto me-0" type="button" data-bs-toggle="collapse" data-bs-target="#nbSC" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="nbSC">
-                <div class="navbar-nav mt-2">
-                  <div class="searchbar d-flex me-3">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                  </div>
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  <a class="nav-link" href="#">Features</a>
-                  <a class="nav-link" href="#">Pricing</a>
-                  <a class="nav-link disabled">Disabled</a>
-                </div>
-              </div>
-            </div>
-          </nav>
-    </header>
+    
     <section class="one">
         <div class="container">
-            <h1>Texto</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora placeat consequuntur quo maiores repudiandae, magnam aliquid similique quia autem eius sit nulla fugiat sequi saepe, beatae fugit voluptatibus nam veritatis.</p>
-        </div>
-        <section class="two"></section>
+          <div class="row mt-2">
+            {% for p in Prod %}
+              <div class="col mt-3">
+                <div class="card" style="width: 11rem;">
+                  <img src="{{p.img.url}}" class="card-img-top" alt="..." >
+                  <div class="card-body">
+                      <p class="card-text">{{p.name}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+    </section>
+    <section class="two">
+      <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora laudantium, libero delectus adipisci praesentium dolor quaerat culpa quis unde at distinctio aut natus iure vitae optio tempore quo. Omnis, officia.</p>
+      </div>
     </section>
     
 
