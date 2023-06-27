@@ -12,45 +12,112 @@
     {% endblock head %}
     <title>{% block title %} {% endblock %}</title>
 </head>
-<body>
-    <header class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="menubtn"><button class="btn btn-outline-dark">Menu</button></div>
-            <div class="container-fluid mx-auto ms-3">
-              <button class="navbar-toggler mt-2 mx-auto me-4" type="button" data-bs-toggle="collapse" data-bs-target="#nbSC" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<body onload="actualizaReloj()">
+  <div id="hedr" class="header">
+    <div class="sidenav">
+      <li style="list-style: none; margin-left: 30%;"><p id="reloj"></p></li>
+      <li id="darkbtn"><button id="dark-mode-toggle" class="btn btn-outline-dark" style="color: white;">Dark Mode</button></li>
+      <a href="/" class="logo"><img src="{% static 'img/logo.png' %}" alt="" height="100px"></a>
+      <a href="/" class="logosmall"><img src="{% static 'img/logo.png' %}" alt="" height="50px"></a>
+      <ul class="nav-links">
+        <li><a href="/"><p>Home</p></a></li>
+        <li><a href="#"><p>Categorias</p></a></li>
+        <li><a href="/contact"><p>Contacto</p></a></li>
+        <li><button class="btn btn-primary mt-5 mx-auto ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#caroffcanv" aria-controls="offcanvasRightWithBothOptions"><img id="imgcart" src="{% static 'img/cart.png' %}" alt="" height="30px"></button></li>
+        <li>
+        {% if user.is_authenticated %}
+            {% if user.is_staff%}
+              <button type="button" class="btn btn-outline-primary mt-5 mx-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
               </button>
-              <div class="collapse navbar-collapse" id="nbSC">
-                <div class="navbar-nav mt-2">
-                  <div class="searchbar d-flex me-3">
-                    <form id="cart" class="d-flex" role="search"> {% csrf_token %}
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                  </div>
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  <a class="nav-link" href="#">Features</a>
-                  <a class="nav-link" href="#">Pricing</a>
-                  <a class="nav-link disabled">Disabled</a>
-                </div>
-              </div>
-            </div>
-          </nav>
-    </header>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-center" href="/adminView" style="color: var(--fourth-color);">Tienda</a></li>
+                <li><a class="dropdown-item text-center" href="/logout" style="color: rgb(156, 10, 10);">Cerrar Sesion</a></li>
+              </ul>
+            {% else %}
+              <button type="button" class="btn btn-outline-primary mt-5 mx-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Usuario
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-center" href="/logout" style="color: rgb(156, 10, 10);">Cerrar Sesion</a></li>
+              </ul>
+            {% endif %}
+        {% else %}
+            <a href="/login"><button class="btn btn-outline-primary mt-5 mx-auto" type="button">Ingresar</button></a>
+        {% endif %}</li>
+      </ul>
+    </div>
+  </div>
+  
     
     {% block body %}
     
     
-    {% endblock body %}
+    {% endblock%}
+    <div id="rightcanv">
+      <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="caroffcanv" aria-labelledby="offcanvasRightWBOL">
+          <div class="offcanvas-header" style="border: solid rgba(34, 34, 34, 0.637); background-color: rgb(44, 44, 44); color: white">
+              <h5 class="offcanvas-title" id="offcanvasRightWBOL">Carro de Compra</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div id="carcanvbody" class="offcanvas-body" style="padding: 5%; background-color: rgba(255, 250, 247, 0.945);">
+              <div class="card mx-auto" style="width: 100%; height: 80%;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-3">
+                            <img src="#" alt="" style="width: 3rem; height: 5rem;">
+                        </div>
+                        <div class="col-9 mx-auto justify-content-center">
+                            <h6>SKU 558880011</h6>
+                            <h5>Jujutsu Kaisen vol.11</h5>
+                            <div class="d-flex mx-auto ms-5 align-items-center">
+                              <h6 style="margin-top: 0.25rem;">Cantidad: </h6>
+                              <input type="number" class="form-control" value="1" style="width: 3rem; margin-left: 1rem;">
+                            </div>
+                        </div>
+                    </div>
+                  </li>
+          </div>
+          <div class="row" style="padding: 3%;">
+            <div class="col-3">Total:</div>
+            <div class="col-6"><br></div>
+            <div class="col-3"><h6>$27.000</h6></div>    
+          </div>
+          <div class="row d-flex align-items-center" style=" padding: 5%; border: solid rgba(92, 92, 92, 0.178);">
+              <div class="col ms-3 mx-auto">
+                <button class="btn btn-light btn-outline-dark" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="font-size: small;">Seguir Comprando</button>
+              </div>
+              <div class="col mx-auto me-3">
+                <a href="login.html"><button class="btn btn-dark" type="button" style="font-size: small;">Carro de Compras</button></a>
+              </div>
+          </div>
+      </div>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                  <div id="successToast" class="toast d-flex align-items-center text-white bg-success position-fixed top-50 start-50 translate-middle" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999">
+            {% elif message.tags == 'error' %}
+                  <div id="errorToast" class="toast d-flex align-items-center text-white bg-danger position-fixed top-50 start-50 translate-middle" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999">
+            {% endif %}
+                    <div class="toast-body">
+                      {{ message }}
+                    </div>
+                </div>
+        {% endfor %}
+      {% endif %}
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-    <script src="../static/js/funciones.js"></script>
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/funciones.js' %}"></script>
     <script src="{% static 'js/cart.js' %}"></script>
     {% block script %}
 
     
-    {% endblock script %}
+    {% endblock %}
 
 </body>
 </html>

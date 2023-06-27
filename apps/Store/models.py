@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Category(models.Model):
-    cate_id = models.IntegerField(primary_key=True)
+    cate_id = models.IntegerField(primary_key=True, unique=True)
     cate_name = models.CharField(max_length=50, null=False)
 
     def __str__(self):
@@ -12,16 +13,28 @@ class Category(models.Model):
     
 
 class Product(models.Model):
-    prod_id = models.IntegerField(primary_key=True)
+    prod_id = models.IntegerField(primary_key=True, unique=True)
     name = models.CharField(max_length=100, null=False)
-    price = models.IntegerField(null=False)
+    author = models.CharField(max_length=50, null=False)
+    price = models.PositiveIntegerField(null=False)
     id_cate = models.ForeignKey(Category, on_delete=models.CASCADE)
     desc = models.CharField(max_length=1000,null=False)
-    stock = models.IntegerField(null=False)
+    stock = models.PositiveIntegerField(null=False)
     img = models.ImageField(upload_to='ProdImg')
     insdate= models.DateField(auto_now_add=True)
 
     def __str__(self):
-        txt = "Codigo: {0} - Nombre: {1} - Categoria: {2} - Stock: {3} - Fecha: {4}"
-        return txt.format(self.prod_id, self.name, self.id_cate, self.stock, self.insdate)
+        txt = "Codigo: {0} - Titulo: {1} - Autor {2} - Categoria: {3} - Stock: {4} - Fecha: {5}"
+        return txt.format(self.prod_id, self.name, self.author, self.id_cate, self.stock, self.insdate)
+
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1) 
     
+    
+    def __str__(self):
+        return f"Cart {self.pk}"
+
+    # Definir campo de clave primaria automático
+    cart_id = models.AutoField(primary_key=True)

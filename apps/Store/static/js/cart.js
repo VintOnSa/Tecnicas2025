@@ -1,6 +1,6 @@
 
 
-
+/*
 let btnCart = document.getElementById("cart");
 
 btnCart.addEventListener('click',function(){
@@ -22,3 +22,4 @@ btnCart.addEventListener('click',function(){
     })
 
 })
+*/

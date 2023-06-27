@@ -9,3 +9,12 @@ class ObtainProduct(View):
     def get(self,request):
         products = Product.objects.all()
         return JsonResponse(list(products.values()),safe=False)
+    
+
+def add_to_cart(request, product_id):
+    
+    return JsonResponse({"message": "Producto agregado al carrito correctamente."})
+
+def get_cart(request):
+    
+    return JsonResponse({"cart": "Datos del carrito de compras"})

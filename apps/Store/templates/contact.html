@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+<section id="bgkc" class="onesalg">
+        <div class="form-group">
+            <div id="contlgn" class=" d-flex align-items-center" style=" margin-top: 10%;">
+                <div class="container col-md-4" style="background: rgba(51,51,51,0.8); padding: 5%; color: white;">
+                    <div>
+                        <h3>Horarios</h3>
+                        <h6>Lunes a Viernes: 10:00 a 19:00</h6>
+                        <h6>Sabados y Domingos: 11:00 a 18:00</h6>
+                    </div> 
+                    <div><br></div>
+                    <div>
+                        <h3>Contacto</h3>
+                        <h6>empresa@correo.com</h6>
+                    </div>
+                    <div><br></div>
+                    <div>
+                        <h3>Casa Matriz</h3>
+                        <h6>Av. Juanito Perez #348, Providencia <br> Region Metropolitana</h6>
+                    </div> 
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock body %}
+
+{% block script%}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends './StoreAdmin.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Tienda{% endblock %}
+
+{% block body %}
+    
+    <section id="bgkc" class="onesad">
+        <div class="container mt-5">
+            <div class="row mt-5">
+                <div class="col-md-7 mt-2 mb-5">
+                    <a href="/AddProduct"><button type="button" class="btn btn-outline-success form-control">Agregar Producto</button></a>
+                </div>
+                <div class="col-md-7 mb-5">
+                    <a href="/Prodlist"><button type="button" class="btn btn-outline-primary form-control">Listado de Productos</button></a>
+                </div>
+                <div class="col-md-7 mb-5">
+                    <button type="button" class="btn btn-outline-secondary form-control">Administrar Categorias</button>
+                </div>
+            </div>   
+        </div>
+    </section>
+
+
+
+{% endblock body %}

@@ -1,0 +1,74 @@
+{% extends './StoreAdmin.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Agregar Producto{% endblock %}
+
+{% block body %}
+    
+    <section id="bgkc" class="onesa">
+       <div class="container mt-5">
+            <h2 class="mb-4">Agregar producto</h2>
+            <form id="formAddProduct" action="/addPro" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <label for="txTitle">Titulo:</label>
+                        <input name="txTitle" id="txTitle" placeholder="Ingrese Titulo" type="text" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 mb-2">
+                        <label for="txAuthor">Autor:</label>
+                        <input name="txAuthor" id="txAuthor" placeholder="Ingrese Autor "type="text" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-4 mb-2">
+                        <label for="txPrice">Precio:</label>
+                        <input name="txPrice" id="txPrice" placeholder="Ingrese Precio" type="number" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-4 mb-2">
+                        <label for="optCate">Categoria:</label>
+                        <select name="optCate" id="optCate" class="form-select" aria-label="Default select example">
+                            <option disabled selected value="null">Seleccione</option>
+                            {% for c in Cate %}
+                                <option value="{{c.cate_id}}">{{c.cate_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-4 mb-2">
+                        <label for="txStock">Stock:</label>
+                        <input name="txStock" id="txStock" placeholder="Ingrese Stock" type="number" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-12 mb-2">
+                        <label for="txDesc">Descripción:</label>
+                        <input name="txDesc" id="txDesc" placeholder="Ingrese Descripción" type="text" class="form-control">
+                    </div>
+
+
+                    <div class="col-md-12 mb-2">
+                        <label for="iptImg">Portada:</label>
+                        <input name="iptImg" id="iptImg" placeholder="Seleccione la Portada" type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button class="btn btn-outline-success" type="submit">Agregar producto</button>
+                </div>
+            </form>
+       </div>
+    </section>
+    
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}
