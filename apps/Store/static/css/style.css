@@ -49,11 +49,13 @@
 
 .logo{
     display: block;
+    margin-top: 10px;
     padding: 0 30px;
     margin-bottom: 80px;
 }
 
 .logosmall{
+    margin-top: 10px;
     display: none;
     padding: 0 15px;
     margin-bottom: 80px;
@@ -208,6 +210,16 @@ h1{
     padding: 4rem;
 }
 
+#resultadosCollapse{
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+#resultadosCollapse .card{
+    background-color: white;
+}
+
 #resultadosCollapse img{
     height: 75px;
     width: 50px;
@@ -235,6 +247,11 @@ h1{
 .dark-mode{
     background-color: #404246;
     color: white;
+}
+
+.dark-mode .card{
+    background-color: white;
+    color: var(--fourth-color);
 }
 
 
@@ -345,6 +362,11 @@ h1{
         padding-bottom: 40%;
         display: flex;
     }
+    #uemodal {
+        padding-left: 20%;
+        padding-bottom: 40%;
+        display: flex;
+    }
 }
 @media only screen and (max-width: 500px){
     .one{
@@ -352,6 +374,12 @@ h1{
         margin-right: 10%;
     }
     #pemodal{
+        margin-left: 0;
+        width: 1100px;
+        padding-bottom: 70%;
+        display: flex;
+    }
+    #uemodal{
         margin-left: 0;
         width: 1100px;
         padding-bottom: 70%;
@@ -366,6 +394,12 @@ h1{
     }
 
     #pemodal {
+        margin-left: 0;
+        width: 600px;
+        padding-bottom: 80%;
+        display: flex;
+    }
+    #uemodal {
         margin-left: 0;
         width: 600px;
         padding-bottom: 80%;

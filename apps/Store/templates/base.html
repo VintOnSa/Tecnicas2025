@@ -21,7 +21,7 @@
       <a href="/" class="logosmall"><img src="{% static 'img/logo.png' %}" alt="" height="50px"></a>
       <ul class="nav-links">
         <li><a href="/"><p>Home</p></a></li>
-        <li><a href="#"><p>Categorias</p></a></li>
+        <li><a href="/categories"><p>Categorias</p></a></li>
         <li><a href="/contact"><p>Contacto</p></a></li>
         <li><button class="btn btn-primary mt-5 mx-auto ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#caroffcanv" aria-controls="offcanvasRightWithBothOptions"><img id="imgcart" src="{% static 'img/cart.png' %}" alt="" height="30px"></button></li>
         <li>
@@ -35,7 +35,7 @@
                 <li><a class="dropdown-item text-center" href="/logout" style="color: rgb(156, 10, 10);">Cerrar Sesion</a></li>
               </ul>
             {% else %}
-              <button type="button" class="btn btn-outline-primary mt-5 mx-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-outline-primary mt-5 me-1 mx-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Usuario
               </button>
               <ul class="dropdown-menu">

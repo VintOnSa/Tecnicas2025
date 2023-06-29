@@ -52,16 +52,18 @@ $(function(){
             let text = $(this).text().toLowerCase();
             let match = text.indexOf(val) > -1;
             if (match) {
-                $(this).stop().fadeIn(200); // Muestra las filas coincidentes con una transición fadeIn
+                $(this).stop().fadeIn(200);
             } else {
-                $(this).stop().fadeOut(200); // Oculta las filas no coincidentes con una transición fadeOut
+                $(this).stop().fadeOut(200);
             }
         })
     })
 })
 
 
-
+/*document.getElementById("agregarBtn").addEventListener("click", function() {
+  location.reload();
+});*/
 
 var abrirModalBtn = document.querySelectorAll('.btn-abrir-modal');
 
@@ -85,6 +87,30 @@ abrirModalBtn.forEach(function(button) {
       delProd.href = '/delProd/' + productId;
   });
 });
+
+var abrirModalBtnul = document.querySelectorAll('.btn-abrir-modalul');
+
+abrirModalBtnul.forEach(function(button) {
+  button.addEventListener('click', function() {
+    var userId = button.getAttribute('data-username');
+
+    var modal = document.getElementById('uemodal');
+    modal.setAttribute('data-username', userId);
+    fetch("/obtainUser?id=" + userId)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        document.getElementById("modalbodyue").textContent = "¿Esta seguro que Desea Eliminar "+ data.name +"?";
+      })
+      .catch(function(error) {
+        console.error("Error al obtener la información del Usuario:", error);
+      });
+      var delProdul = document.getElementById('delBtnul');
+      delProdul.href = '/delUser/' + userId;
+  });
+});
+
 
 
 $(document).ready(function() {
@@ -119,11 +145,14 @@ $(document).ready(function() {
     }, 1000);
   });
 
+  
+
 
 
 
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 const section = document.getElementById('bgkc');
+const card = document.getElementById('cards');
 
 const savedMode = localStorage.getItem('darkMode');
 
@@ -133,11 +162,13 @@ if (savedMode === 'dark') {
 
 function enableDarkMode() {
   section.classList.add('dark-mode');
+  card.classList.add('dark-mode');
   localStorage.setItem('darkMode', 'dark');
 }
 
 function disableDarkMode() {
   section.classList.remove('dark-mode');
+  card.classList.remove('dark-mode');
   localStorage.setItem('darkMode', 'light');
 }
 

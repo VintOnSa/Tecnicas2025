@@ -31,7 +31,7 @@
                 <div class="d-flex col-lg justify-content-center"><h2>Precio: ${{Prod.price}}</h2></div>
                 <br>
                 <div class="d-flex col-lg justify-content-center">
-                  <a href="{% url 'add_to_cart' Prod.prod_id %}"><button class="btn btn-outline-primary" style="color: white;" type="button" data-bs-target="#pamodal" data-bs-toggle="modal"><h4 class="my-auto">Agregar al Carro</h4></button></a>
+                  <a id="agregarBtn" href="#"><button class="btn btn-outline-primary" style="color: white;" type="button" data-bs-target="#pamodal" data-bs-toggle="modal" data-product-id="{{Prod.prod_id}}"><h4 class="my-auto">Agregar al Carro</h4></button></a>
                 </div>
             </div>
             <div class="col-lg-1"><br></div>

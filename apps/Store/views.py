@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import os
 import json
-import requests
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 
@@ -58,6 +57,10 @@ def cProdview(request, id):
 
     return render(request, "Product.html",{"Prod": products, "Cate":categories, "CateId": ProdcateId})
 
+def cUserlist(request):
+    usuarios = User.objects.all()
+    return render(request, "UserList.html", {"Users": usuarios})
+
 @login_required
 def cadmStore(request):
     user = request.user
@@ -71,13 +74,18 @@ def cLogin(request):
 
         user = authenticate(request, username=username, password=password)
 
+        
         if user is not None:
             login(request, user)
-
+            
             if user.is_staff:
+                messages.success(request, 'Bienvenido Administrador.')
                 return redirect('/adminView')
             else:
-                return redirect('/base')
+                messages.success(request, 'Bienvenido Usuario.')
+                return redirect('inicio')
+        else:
+            messages.error(request, 'Los Datos Ingresados son Incorrectos.')
             
     return render(request, "login.html")
 
@@ -112,6 +120,31 @@ def cRegister(request):
         form = RegisterForm()
     
     return render(request, 'register.html', {'form': form})
+
+def obInfUser(request):
+    use_id = request.GET.get('id')
+    usuario = User.objects.get(username=use_id)
+
+    user_info = {
+        'name': usuario.username
+    }
+    return JsonResponse(user_info)
+
+
+def delUser(request,username):
+    
+    if User.objects.filter(username=username).exists():
+        user = User.objects.get(username=username)
+        if user.is_staff:
+            messages.error(request, 'No se puede eliminar a un Administrador')
+            return redirect('/userlist')
+        else:
+            user.delete()
+            messages.error(request, 'El Usuario ha sido Eliminado Exitosamente.')
+    else:
+        messages.error(request, 'Usuario no Existe.')
+
+    return redirect('/userlist')
 
 def cContact(request):
     return render(request, "contact.html")
@@ -155,7 +188,10 @@ def addProd(request):
 
     return redirect('/AddProduct')
 
-
+def cCategories(request):
+    products = Product.objects.all()
+    catego = Category.objects.all()
+    return render(request, "Category.html", {"Prod": products, "Cate": catego})
 
 def editProd(request):
     ed_id = request.POST['txSku']

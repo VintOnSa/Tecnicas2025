@@ -30,7 +30,7 @@
                   {% for p in Last %}
                   <a href="/Prodview/{{p.prod_id}}">  
                     <div class="col mt-3">
-                        <div class="card" style="width: 11rem;">
+                        <div id="cards" class="card" style="width: 11rem;">
                           <img src="{{p.img.url}}" class="card-img-top" alt="..." >
                           <div class="card-body">
                               <p class="card-text ">{{p.name}}</p>
@@ -90,4 +90,5 @@
 
 {% block script%}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'js/funciones.js' %}"></script>
 {% endblock %}
