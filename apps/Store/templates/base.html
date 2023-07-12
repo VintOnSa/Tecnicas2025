@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geologica">
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/png">
     {% block head %}
     
     {% endblock head %}
@@ -16,14 +17,18 @@
   <div id="hedr" class="header">
     <div class="sidenav">
       <li style="list-style: none; margin-left: 30%;"><p id="reloj"></p></li>
-      <li id="darkbtn"><button id="dark-mode-toggle" class="btn btn-outline-dark" style="color: white;">Dark Mode</button></li>
+      <li id="darkbtn"><button id="darkmodebtn" class="btn btn-outline-dark" style="color: white;">Dark Mode</button></li>
       <a href="/" class="logo"><img src="{% static 'img/logo.png' %}" alt="" height="100px"></a>
       <a href="/" class="logosmall"><img src="{% static 'img/logo.png' %}" alt="" height="50px"></a>
       <ul class="nav-links">
         <li><a href="/"><p>Home</p></a></li>
         <li><a href="/categories"><p>Categorias</p></a></li>
         <li><a href="/contact"><p>Contacto</p></a></li>
-        <li><button class="btn btn-primary mt-5 mx-auto ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#caroffcanv" aria-controls="offcanvasRightWithBothOptions"><img id="imgcart" src="{% static 'img/cart.png' %}" alt="" height="30px"></button></li>
+        <li><button id="btn-carro" type="button" class="btn btn-primary mt-5 mx-auto ms-1" data-bs-toggle="offcanvas" data-bs-target="#caroffcanv" aria-controls="offcanvasRightWithBothOptions">
+              <img id="imgcart" src="{% static 'img/cart.png' %}" alt="" height="30px">
+              <span id="carrospan" class="badge text-bg-secondary">0</span>
+            </button>
+        </li>
         <li>
         {% if user.is_authenticated %}
             {% if user.is_staff%}
@@ -39,6 +44,7 @@
                 Usuario
               </button>
               <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-center" href="/cMyAcc" style="color: var(--fourth-color);">Mi Cuenta</a></li>
                 <li><a class="dropdown-item text-center" href="/logout" style="color: rgb(156, 10, 10);">Cerrar Sesion</a></li>
               </ul>
             {% endif %}
@@ -60,40 +66,49 @@
               <h5 class="offcanvas-title" id="offcanvasRightWBOL">Carro de Compra</h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div id="carcanvbody" class="offcanvas-body" style="padding: 5%; background-color: rgba(255, 250, 247, 0.945);">
-              <div class="card mx-auto" style="width: 100%; height: 80%;">
+          <div id="carcanvbody" class="offcanvas-body" style="padding: 3%; background-color: rgba(255, 250, 247, 0.945);">
+              <div class="card mx-auto" style="width: 100%; height: 80%; overflow: auto;">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     <div class="row d-flex align-items-center">
-                        <div class="col-3">
-                            <img src="#" alt="" style="width: 3rem; height: 5rem;">
-                        </div>
-                        <div class="col-9 mx-auto justify-content-center">
-                            <h6>SKU 558880011</h6>
-                            <h5>Jujutsu Kaisen vol.11</h5>
-                            <div class="d-flex mx-auto ms-5 align-items-center">
-                              <h6 style="margin-top: 0.25rem;">Cantidad: </h6>
-                              <input type="number" class="form-control" value="1" style="width: 3rem; margin-left: 1rem;">
-                            </div>
-                        </div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="carrito-producto">
+                          <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </li>
-          </div>
+                </ul>
+              </div>
+          
           <div class="row" style="padding: 3%;">
-            <div class="col-3">Total:</div>
-            <div class="col-6"><br></div>
-            <div class="col-3"><h6>$27.000</h6></div>    
+            <div class="container mx-auto me-0"> Total: $<span id="carrito-precio"></span></div>    
           </div>
           <div class="row d-flex align-items-center" style=" padding: 5%; border: solid rgba(92, 92, 92, 0.178);">
               <div class="col ms-3 mx-auto">
                 <button class="btn btn-light btn-outline-dark" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="font-size: small;">Seguir Comprando</button>
               </div>
               <div class="col mx-auto me-3">
-                <a href="login.html"><button class="btn btn-dark" type="button" style="font-size: small;">Carro de Compras</button></a>
+                <a id="btncompra" href="/ccart"><button class="btn btn-dark" type="button" style="font-size: small;">Comprar Productos</button></a>
               </div>
           </div>
       </div>
     </div>
+  </div>
     {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'success' %}
@@ -113,7 +128,10 @@
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="{% static 'js/apiReloj.js' %}"></script>
+    <script src="{% static 'js/darkMode.js' %}"></script>
     <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/carro.js' %}"></script>
     {% block script %}
 
     

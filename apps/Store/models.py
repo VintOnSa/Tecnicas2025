@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     cate_id = models.IntegerField(primary_key=True, unique=True)
+    cate_img = models.ImageField(upload_to='CateImg')
     cate_name = models.CharField(max_length=50, null=False)
 
     def __str__(self):

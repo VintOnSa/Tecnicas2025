@@ -1,15 +1,17 @@
 {% extends './base.html' %}
 {% load static %}
 
+
+
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
-{% block title %}Categorias{% endblock %}
+{% block title %}{{Cate.cate_name}}{% endblock %}
 
 {% block body %}
 
-    <div id="bgkc" class="one" style="position: absolute; width: 100%;">
+    <div id="bgkc" class="one" style="position: absolute; width: 100%; height: auto;">
       <div id="searchbar" class="col-md-4 mt-5 mx-auto">
         <form class="d-flex" role="search">
           <input class="form-control me-2" id="searchInput" type="search" placeholder="Buscar" aria-label="Search" data-bs-target="#resultadosCollapse" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="resultadosCollapse">
@@ -21,17 +23,17 @@
         </div>
       </div>
       <div id="contCate" class="container" style="top: 0;">
-        <h2 class="col-md-4 mx-auto mt-5">Categorias</h2>
+        <h2 class="col-md-4 mx-auto mt-5">Titulos</h2>
         <div class="row">
-          {% for p in Cate %}
-            <a class="col mt-3" href="/Cateview/{{p.cate_id}}">  
-              <div class="col">
-                  <div id="contCatecard" class="card" style="width: 11rem;">
-                    <img src="{{p.cate_img.url}}" class="card-img-top" alt="..." style="width: 11rem; height:7rem;" >
-                    <div class="card-body">
-                        <p class="card-text ">{{p.cate_name}}</p>
-                    </div>
+          {% for p in Prodc %}
+          <a class="col mt-3" href="/Prodview/{{p.prod_id}}">  
+            <div class="col mt-3">
+                <div id="contCatecard" class="card" style="width: 11rem;">
+                  <img src="{{p.img.url}}" class="card-img-top" alt="..." >
+                  <div class="card-body">
+                      <p class="card-text ">{{p.name}}</p>
                   </div>
+                </div>
               </div>
             </a>
           {% endfor %}
@@ -44,5 +46,5 @@
 {% endblock body %}
 
 {% block script%}
- 
+
 {% endblock %}

@@ -11,7 +11,7 @@
 
 {% block body %}
 
-<section id="bgkc" class="onesalg">
+<div id="bgkc" class="container" style="position: absolute; width: 100%;">
     <form id="loginform" method="POST"> {% csrf_token %}
         <div class="form-group">
             <div id="contlgn" class=" d-flex align-items-center" style=" margin-top: 10%;">
@@ -38,10 +38,9 @@
             </div>
         </div>
     </form>
-</section>
+</div>
 {% endblock body %}
 
 {% block script%}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{% static 'js/forms.js' %}"></script>
 {% endblock %}

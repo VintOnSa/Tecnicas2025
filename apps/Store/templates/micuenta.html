@@ -1,11 +1,11 @@
-{% extends './StoreAdmin.html' %}
+{% extends './base.html' %}
 {% load static %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
-{% block title %}Tienda{% endblock %}
+{% block title %}Mi Cuenta{% endblock %}
 
 {% block body %}
     
@@ -13,13 +13,13 @@
         <div class="container mt-5">
             <div class="row mt-5">
                 <div class="col-md-7 mt-2 mb-5">
-                    <a href="/AddProduct"><button type="button" class="btn btn-outline-success form-control">Agregar Producto</button></a>
+                    <a href="/edAcc/{{request.user.username}}"><button type="button" class="btn btn-outline-success form-control">Editar Datos</button></a>
                 </div>
                 <div class="col-md-7 mb-5">
-                    <a href="/Prodlist"><button type="button" class="btn btn-outline-primary form-control">Listado de Productos</button></a>
+                    <a href="/edCon/{{request.user.username}}"><button type="button" class="btn btn-outline-primary form-control">Cambiar Contraseña</button></a>
                 </div>
                 <div class="col-md-7 mb-5">
-                    <a href="/Catelist"><button type="button" class="btn btn-outline-secondary form-control">Administrar Categorias</button></a>
+                    <a href="/cdelAcc/{{request.user.username}}"><button type="button" class="btn btn-outline-danger form-control">Eliminar Cuenta</button></a>
                 </div>
             </div>   
         </div>

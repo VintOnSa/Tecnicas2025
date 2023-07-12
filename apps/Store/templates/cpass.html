@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Cambiar Contraseña{% endblock %}
+
+{% block body %}
+
+<div id="bgkc" class="container" style="position: absolute; width: 100%;">
+    <div class="container mt-5">
+     <h2 class="mb-4">Cambiar Contraseña</h2>
+     <form id="formEdUser" action="/eddCon" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+         <div class="row">
+             <div class="col-md-5 mt-3">
+                <label for="txPass2">Contraseña Actual:</label>
+                <input placeholder="Ingrese Contraseña Actual" name="txPass2" id="txPass2" type="password" class="form-control">
+                <h6 style="font-size: small; text-align: center;">Si olvido su Contraseña Contacte al Administrador</h6>
+            </div>
+            <div class="col-md-5 mt-3">
+                <label for="txPass">Nueva Contraseña:</label>
+                <input placeholder="Ingrese Nueva Contraseña" name="txPass" id="txPass" type="password" class="form-control">
+            </div>
+         </div>
+         <div class="col-md-10 d-flex justify-content-center mt-5">
+             <button class="btn btn-outline-success" type="submit">Cambiar Contraseña</button>
+         </div>
+     </form>
+     <div class="d-flex col-md-10 justify-content-center mt-2 mb-5">
+        <a href="/cMyAcc"><button class="btn btn-outline-danger" type="button">Cancelar</button></a>
+    </div>
+    </div>
+
+    
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}

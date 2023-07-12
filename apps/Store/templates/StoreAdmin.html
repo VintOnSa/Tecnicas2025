@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geologica">
+    <link rel="icon" href="{% static 'img/icon.png' %}" type="image/png">
     {% block head %}
     
     {% endblock head %}
@@ -16,7 +17,7 @@
   <div id="hedr" class="header">
     <div class="sidenav">
       <li style="list-style: none; margin-left: 30%;"><p id="reloj"></p></li>
-      <li id="darkbtn"><button id="dark-mode-toggle" class="btn btn-outline-dark" style="color: white;">Dark Mode</button></li>
+      <li id="darkbtn"><button id="darkmodebtn" class="btn btn-outline-dark" style="color: white;">Dark Mode</button></li>
       <a href="/" class="logo"><img src="{% static 'img/logo.png' %}" alt="" height="100px"></a>
       <a href="/" class="logosmall"><img src="{% static 'img/logo.png' %}" alt="" height="50px"></a>
       <ul class="nav-links">
@@ -31,7 +32,7 @@
       </ul>
     </div>
   </div>
-    <section id="bgkc" class="onesad">
+    <section id="bgkc" class="one">
       {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success' %}
@@ -57,7 +58,9 @@
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'js/funciones.js' %}"></script>
-    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/apiReloj.js' %}"></script>
+    <script src="{% static 'js/darkMode.js' %}"></script>
+    <script src="{% static 'js/forms.js' %}"></script>
     {% block script %}
 
     

@@ -1,25 +1,8 @@
-function Apireloj(){
-  fetch('http://worldtimeapi.org/api/timezone/America/Santiago')
-      .then(response => response.json())
-      .then(data =>{
-          let h4hora = document.getElementById("reloj");
-          
-          var hora = data.datetime.substring(11, 19);
-
-          h4hora.innerHTML = hora;
-      })
-}
-function actualizaReloj(){
-  Apireloj();
-  setInterval(Apireloj, 1000);
-}
-
-
 $(document).ready(function() {
     $('#searchInput').on('keyup', function() {
         var searchTerm = $(this).val();
         $.ajax({
-            url: 'search/',
+            url: '/search/',
             type: 'GET',
             data: { 'q': searchTerm },
             success: function(response) {
@@ -61,58 +44,106 @@ $(function(){
 })
 
 
-/*document.getElementById("agregarBtn").addEventListener("click", function() {
-  location.reload();
-});*/
-
+//Funcion Mostrar Modal Eliminar Producto
 var abrirModalBtn = document.querySelectorAll('.btn-abrir-modal');
+if(abrirModalBtn){
+  abrirModalBtn.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var productId = button.getAttribute('data-product-id');
 
-abrirModalBtn.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var productId = button.getAttribute('data-product-id');
-
-    var modal = document.getElementById('pemodal');
-    modal.setAttribute('data-product-id', productId);
-    fetch("/obtainProd?id=" + productId)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        document.getElementById("modalbody").textContent = "¿Esta seguro que Desea Eliminar "+ data.name +"?";
-      })
-      .catch(function(error) {
-        console.error("Error al obtener la información del producto:", error);
-      });
-      var delProd = document.getElementById('delBtn');
-      delProd.href = '/delProd/' + productId;
+      var modal = document.getElementById('pemodal');
+      modal.style.display = 'flex';
+      modal.setAttribute('data-product-id', productId);
+      fetch("/obtainProd?id=" + productId)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          document.getElementById("modalbody").textContent = "¿Esta seguro que Desea Eliminar "+ data.name +"?";
+        })
+        .catch(function(error) {
+          console.error("Error al obtener la información del producto:", error);
+        });
+        var delProd = document.getElementById('delBtn');
+        delProd.href = '/delProd/' + productId;
+        delProd.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+        var caBtn = document.getElementById('caBtn');
+        caBtn.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+    });
   });
-});
+}
 
+//Funcion Mostrar Modal Eliminar Usuario
 var abrirModalBtnul = document.querySelectorAll('.btn-abrir-modalul');
+if (abrirModalBtnul){
+  abrirModalBtnul.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var userId = button.getAttribute('data-username');
 
-abrirModalBtnul.forEach(function(button) {
-  button.addEventListener('click', function() {
-    var userId = button.getAttribute('data-username');
-
-    var modal = document.getElementById('uemodal');
-    modal.setAttribute('data-username', userId);
-    fetch("/obtainUser?id=" + userId)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        document.getElementById("modalbodyue").textContent = "¿Esta seguro que Desea Eliminar "+ data.name +"?";
-      })
-      .catch(function(error) {
-        console.error("Error al obtener la información del Usuario:", error);
-      });
-      var delProdul = document.getElementById('delBtnul');
-      delProdul.href = '/delUser/' + userId;
+      var modal = document.getElementById('uemodal');
+      modal.style.display = 'flex';
+      modal.setAttribute('data-username', userId);
+      fetch("/obtainUser?id=" + userId)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          document.getElementById("modalbodyue").textContent = "¿Esta seguro que Desea Eliminar "+ data.name +"?";
+        })
+        .catch(function(error) {
+          console.error("Error al obtener la información del Usuario:", error);
+        });
+        var delProdul = document.getElementById('delBtnul');
+        delProdul.href = '/delUser/' + userId;
+        delProdul.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+        var caBtn = document.getElementById('caBtn');
+        caBtn.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+    });
   });
-});
+}
 
+//Mostrar Modal Eliminar Categoria
+var abrirModalBtncl = document.querySelectorAll('.btn-abrir-modalcl');
+if (abrirModalBtncl){
+  abrirModalBtncl.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var categoryId = button.getAttribute('data-product-id');
 
+      var modal = document.getElementById('cemodal');
+      modal.style.display = 'flex';
+      modal.setAttribute('data-product-id', categoryId);
+      fetch("/obtainCate?id=" + categoryId)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          document.getElementById("modalbodyce").textContent = "¿Esta seguro que Desea Eliminar la Categoria "+ data.name +"?";
+        })
+        .catch(function(error) {
+          console.error("Error al obtener la información de la Categoria:", error);
+        });
+        var delProdce = document.getElementById('delBtncate');
+        delProdce.href = '/delCate/' + categoryId;
+        delProdce.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+        var caBtn = document.getElementById('caBtn');
+        caBtn.addEventListener('click', function(){
+          modal.style.display = 'none';
+        });
+    });
+  });
+}
 
+//Mostrar Toasts
 $(document).ready(function() {
   if ($('.alert-success').length) {
       var successToast = document.getElementById('successToast');
@@ -129,56 +160,22 @@ $(document).ready(function() {
   }, 1000);
 });
 
-  $(document).ready(function() {
-    if ($('.alert-success').length) {
-        var errorToast = document.getElementById('errorToast');
-        var toast = new bootstrap.Toast(errorToast);
-        toast.show();
-    }
-    setTimeout(function() {
-        var errorToast = document.getElementById('errorToast');
-        
-        if (errorToast) {
-            var toast = new bootstrap.Toast(errorToast);
-            errorToast.classList.add("d-none");
-          }
-    }, 1000);
-  });
+$(document).ready(function() {
+  if ($('.alert-success').length) {
+      var errorToast = document.getElementById('errorToast');
+      var toast = new bootstrap.Toast(errorToast);
+      toast.show();
+  }
+  setTimeout(function() {
+      var errorToast = document.getElementById('errorToast');
+      
+      if (errorToast) {
+          var toast = new bootstrap.Toast(errorToast);
+          errorToast.classList.add("d-none");
+        }
+  }, 1000);
+});
 
   
 
 
-
-
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const section = document.getElementById('bgkc');
-const card = document.getElementById('cards');
-
-const savedMode = localStorage.getItem('darkMode');
-
-if (savedMode === 'dark') {
-  enableDarkMode();
-}
-
-function enableDarkMode() {
-  section.classList.add('dark-mode');
-  card.classList.add('dark-mode');
-  localStorage.setItem('darkMode', 'dark');
-}
-
-function disableDarkMode() {
-  section.classList.remove('dark-mode');
-  card.classList.remove('dark-mode');
-  localStorage.setItem('darkMode', 'light');
-}
-
-darkModeToggle.addEventListener('click', () => {
-  const isDarkModeEnabled = section.classList.contains('dark-mode');
-
-
-  if (isDarkModeEnabled) {
-    disableDarkMode();
-  } else {
-    enableDarkMode();
-  }
-});

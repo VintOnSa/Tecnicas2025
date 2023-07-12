@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Eliminar Cuenta{% endblock %}
+
+{% block body %}
+
+<div id="bgkc" class="container" style="position: absolute; width: 100%;">
+    <div class="container mt-5">
+     <h2 class="mb-4">Eliminar Cuenta</h2>
+     <form id="formEdUser" action="/delAcc" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+         <div class="row">
+             <div class="col-md-10 mt-3">
+                <h3 style="text-align: center; color: red;">¿Esta Seguro/a Que Desea Eliminar Su Cuenta?</h3>
+                <h4 style="text-align: center; color: red;">Esta Accion NO se Puede Revertir</h4>
+                <label for="txPass2">Contraseña Actual:</label>
+                <input placeholder="Ingrese Contraseña Actual" name="txPass2" id="txPass2" type="password" class="form-control">
+                <h6 class="mt-2" style="font-size: small; text-align: center;">Debe Ingresar su Contraseña para Confirmar</h6>
+            </div>
+         </div>
+         <div class="col-md-10 d-flex justify-content-center mt-5">
+             <button class="btn btn-danger" type="submit">Eliminar Cuenta</button>
+         </div>
+     </form>
+     <div class="d-flex col-md-10 justify-content-center mt-3 mb-5">
+        <a href="/cMyAcc"><button class="btn btn-outline-secondary" type="button">Cancelar</button></a>
+    </div>
+    </div>
+
+    
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}

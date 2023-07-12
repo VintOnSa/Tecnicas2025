@@ -11,25 +11,25 @@
 
 {% block body %}
 
-<section id="bgkc" class="onesalg">
-    <form id="registerform" method="POST" novalidate> {% csrf_token %}
+<div id="bgkc" class="container" style="position: absolute; width: 100%;">
+    <form id="registerform" method="POST"> {% csrf_token %}
         <div class="form-group">
-            <div id="contlgn" class=" d-flex align-items-center" style=" margin-top: 10%;">
+            <div id="contlgn" class=" d-flex align-items-center mt-5">
                 <div class="container col-md-4" style="background: rgba(51,51,51,0.8); padding: 5%;">
                     <div class="d-flex mx-auto mb-3"><h4 style="color: white;">Registro de Usuario</h4><br></div>
                     <div class="col align-items-center">
-                        <label for="r_username" class="form-label" style="color: white;">Ingrese Nombre Usuario:</label>
-                        <input type="text" id="r_username" name="username" placeholder="Username" class="form-control">
+                        <label for="username" class="form-label" style="color: white;">Ingrese Nombre Usuario:</label>
+                        <input type="text" id="username" name="username" placeholder="Username" class="form-control">
                     </div>
                     <br>
                     <div class="col align-items-center">
-                        <label for="r_email" class="form-label" style="color: white;">Ingrese E-Mail:</label>
-                        <input type="text" id="r_email" name="email" placeholder="alguien@ejemplo.com" class="form-control">
+                        <label for="email" class="form-label" style="color: white;">Ingrese E-Mail:</label>
+                        <input type="text" id="email" name="email" placeholder="alguien@ejemplo.com" class="form-control">
                     </div>
                     <br>
                     <div class="col align-items-center">
-                        <label for="r_password" class="form-label" style="color: white;">Ingrese Contraseña:</label>
-                        <input type="password" placeholder="*********" id="r_password" name="password" class="form-control">
+                        <label for="password" class="form-label" style="color: white;">Ingrese Contraseña:</label>
+                        <input type="password" placeholder="*********" id="password" name="password" class="form-control">
                     </div>
                     <div class="d-flex justify-content-center" style=" padding: 2%; margin-top: 4%;">
                         <button class="btn btn-outline-dark" type="submit" style="color: white;">Registrarse</button>
@@ -43,7 +43,7 @@
             </div>
         </div>
     </form>
-</section>
+</div>
 {% endblock body %}
 
 {% block script%}

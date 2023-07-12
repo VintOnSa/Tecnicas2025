@@ -1,0 +1,52 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Editar Datos{% endblock %}
+
+{% block body %}
+
+<div id="bgkc" class="container" style="position: absolute; width: 100%;">
+    <div class="container mt-5">
+     <h2 class="mb-4">Editar Datos</h2>
+     <form id="formEdUser" action="/eddAcc" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+         <div class="row">
+            <div class="col" style="display: none;">
+                <input value="{{User.username}}" name="txUser2" id="txUser2" type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                 <label for="txUser">Usuario:</label>
+                 <input value="{{User.username}}" name="txUser" id="txUser" type="text" class="form-control">
+             </div>
+             <div class="col-md-6" style="display: none;">
+                <input value="{{User.email}}" name="txEmail2" id="txEmail2" type="email" class="form-control">
+            </div>
+             <div class="col-md-6">
+                 <label for="txEmail">Email:</label>
+                 <input value="{{User.email}}" name="txEmail" id="txEmail" type="email" class="form-control">
+             </div>
+             <div class="col-md-10 mt-3">
+                <label for="txPass">Contraseña:</label>
+                <input placeholder="Ingrese Contraseña" name="txPass" id="txPass" type="password" class="form-control">
+                <h6 style="font-size: small; text-align: center;">Debes ingresar tu Contraseña para confirmar los cambios</h6>
+            </div>
+         </div>
+         <div class="col-md-10 d-flex justify-content-center mt-5">
+             <button class="btn btn-outline-success" type="submit">Editar Datos</button>
+         </div>
+     </form>
+     <div class="d-flex col-md-10 justify-content-center mt-2 mb-5">
+        <a href="/cMyAcc"><button class="btn btn-outline-danger" type="button">Cancelar</button></a>
+     </div>
+    </div>
+
+    
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}

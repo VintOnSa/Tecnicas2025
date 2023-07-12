@@ -11,7 +11,7 @@
 
 {% block body %}
 
-    <section id="bgkc" class="one">
+    <section id="bgkc" class="one" style="height: auto;">
       <div id="searchbar" class="col-md-4 mt-5 mx-auto">
         <form class="d-flex" role="search">
           <input class="form-control me-2" id="searchInput" type="search" placeholder="Buscar" aria-label="Search" data-bs-target="#resultadosCollapse" data-bs-toggle="collapse"  aria-expanded="false" aria-controls="resultadosCollapse">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div id="carousel" class="carousel slide">
-          <h2 class="col-md-3 mx-auto">Ultimas Adiciones</h2>
+          <h2 id="h2caro" class="col-md-4 mx-auto">Ultimas Adiciones</h2>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div id="contcar" class="row">
@@ -89,6 +89,6 @@
 {% endblock body %}
 
 {% block script%}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <script src="{% static 'js/funciones.js' %}"></script>
 {% endblock %}

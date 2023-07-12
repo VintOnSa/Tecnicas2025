@@ -11,6 +11,7 @@ class ObtainProduct(View):
         return JsonResponse(list(products.values()),safe=False)
     
 
+
 def add_to_cart(request, product_id):
     
     return JsonResponse({"message": "Producto agregado al carrito correctamente."})

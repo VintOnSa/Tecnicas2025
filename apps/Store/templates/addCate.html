@@ -1,0 +1,42 @@
+{% extends './StoreAdmin.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}Agregar Categoria{% endblock %}
+
+{% block body %}
+    
+    <div id="bgkc" class="container" style="position: absolute; width: 100%;">
+       <div class="container mt-5">
+            <h2 class="mb-4">Agregar Categoria</h2>
+            <form id="formAddCate" action="/addCate" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-8 mb-2">
+                        <label for="txTitle">Nombre:</label>
+                        <input name="txTitle" id="txTitle" placeholder="Ingrese Nombre Categoria" type="text" class="form-control">
+                    </div>
+
+                    <div class="col-md-8 mb-2">
+                        <label for="iptImg">Imagen:</label>
+                        <input name="iptImg" id="iptImg" placeholder="Seleccione la Imagen" type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="d-flex col-md-8 justify-content-center mt-5">
+                    <button class="btn btn-outline-success" type="submit">Agregar Categoria</button>
+                </div>
+            </form>
+            <div class="d-flex col-md-8 justify-content-center mt-2 mb-5">
+                <a href="/Catelist"><button class="btn btn-outline-danger" type="button">Cancelar</button></a>
+            </div>
+       </div>
+    </div>
+    
+
+{% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/forms.js' %}"></script>
+{% endblock %}
