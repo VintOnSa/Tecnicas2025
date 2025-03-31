@@ -1,0 +1,412 @@
+:root{
+    --main-color: #E3E2DF;
+    --second-color: #000000;
+    --third-color: #9a1750;
+    --fourth-color: #404246;
+    background-color: var(--main-color);
+}
+
+.error{
+    color: red;
+}
+
+#bgkc a{
+    text-decoration: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Geologica', sans-serif;
+}
+
+/*Base CSS Code*/
+.header{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--main-color);
+}
+
+#contlgn{
+    width: 60%;
+    height: 100%;
+    left: 0;
+    margin-left: 20%;
+    z-index: 10;
+}
+
+.sidenav{
+    width: 150px;
+    height: 100%;
+    background-color: var(--fourth-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 0;
+    z-index: 2;
+}
+
+.toast.position-fixed.top-50.start-50.translate-middle {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.logo{
+    display: block;
+    margin-top: 10px;
+    padding: 0 30px;
+    margin-bottom: 80px;
+}
+
+.logosmall{
+    margin-top: 10px;
+    display: none;
+    padding: 0 15px;
+    margin-bottom: 80px;
+}
+
+.nav-links{
+    list-style: none;
+    position: relative;
+    justify-content: center;
+}
+
+.nav-links li{
+    padding: 10px 0;
+}
+
+#reloj{
+    color: var(--main-color);
+    text-decoration: none;
+    padding: 5px 0;
+}
+.nav-links li a{
+    color: var(--main-color);
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.dropdown-item{
+    color: var(--fourth-color);
+    text-decoration: none;
+    left: 1rem;
+    padding: 5px 0;
+}
+
+.nav-links li a img{
+    height: 40px;
+    display: none;
+}
+
+.nav-links a::after{
+    content: '';
+    display: flex;
+    width: 0;
+    height: 1px;
+    background: var(--main-color);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after{
+    width: 80%;
+    transition: width 0.3s;
+}
+
+.one{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--main-color);
+}
+
+#searchbar{
+    left: 30%;
+}
+
+#contlist{
+    margin-left: 10%;
+}
+
+.container{
+    position: relative;
+    left: 5%;
+    top: 5%;
+    width: 70%;
+    height: auto;
+}
+.containercart{
+    position: relative;
+    left: 8%;
+    top: 5%;
+    width: 80%;
+    height: auto;
+}
+
+
+h1{
+    margin-bottom: 1rem;
+    color: var(--third-color);
+    font-size: 2rem;
+}
+
+.card{
+    background-color: #91908e25;
+    color: rgb(59, 59, 59);
+    width: 11rem;
+    margin-left: 2rem;
+    margin-right: 0;
+    margin-top: 1rem;
+    text-align: center;
+}
+.card-img-top{
+    width: 174.4px;
+    height: 274.39px;
+}
+
+#carousel{
+    top: 5%;
+    left: 15%;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+}
+#contcar{
+    margin-left: 1rem;
+    padding: 4rem;
+}
+
+#contCatecard{
+    background-color: #91908e25;
+    color: rgb(59, 59, 59);
+    width: 11rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#resultadosCollapse{
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+#resultadosCollapse .card{
+    background-color: white;
+}
+
+#resultadosCollapse img{
+    height: 75px;
+    width: 50px;
+    margin-left: 2rem;
+    margin-right: 10rem;
+}
+
+#carousel a{
+    width: fit-content;
+    text-decoration: none;
+}
+
+.modal-backdrop {
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+#darkbtn{
+    margin-left: 15%;
+    font-size: 10px;
+    list-style: none;
+}
+
+.dark-mode{
+    background-color: #404246;
+    color: white;
+}
+
+.dark-mode #pamodal{
+    color: #000000;
+}
+
+.dark-mode #pamodal .modal-title{
+    color: #9a1750;
+}
+
+.dark-mode .card{
+    background-color: white;
+    color: var(--fourth-color);
+}
+
+.dark-mode #contCatecard{
+    background-color: white;
+    color: var(--fourth-color);
+}
+
+#carrito-producto{
+    font-size: small;
+}
+
+/* Base CSS Code*/
+
+@media only screen and (max-width: 840px){
+    .one{
+        padding-left: 20%;
+        margin-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 666px){
+    #imgprod{
+        width: 250px;
+        height: 400px;
+    }
+
+    .containercart{
+        position: relative;
+        left: 10%;
+        top: 5%;
+        width: 100%;
+        height: auto;
+    }
+
+    #imgcart{
+        height: 15px;
+    }
+    #darkbtn{
+        margin-left: 10%;
+    }
+    #darkmodebtn{
+        font-size: 7px;
+    }
+
+    .sidenav{
+        width: 75px;
+    }
+
+    .logosmall{
+        display: block;
+    }
+    .logo{
+        display: none;
+    }
+    #reloj{
+        display: flex;
+        font-size: 8px;
+    }
+    .nav-links{
+        padding: 15px 10px;
+    }
+    .nav-links li a p{
+        display: flex;
+        font-size: 8px;
+    }
+    .nav-links a:hover::after{
+        width: 90%;
+    }
+    .nav-links li button{
+        display: flex;
+        font-size: 8px;
+    }
+    #contcar{
+        margin-left: -1rem;
+        padding: 0;
+        margin-right: 2rem;
+        justify-content: center;
+    }
+    #contCate{
+        padding: 3;
+        justify-content: center;
+    }
+
+    #contCatecard{
+        margin-left: -1rem;
+        margin-right: 2rem;
+    }
+    #loginform{
+        font-size: small;
+    }
+    #registerform{
+        font-size: 10px;
+    }
+
+    #contlgn{
+        width: 90%;
+        height: 50%;
+        margin-top: 10%;
+        margin-left: 0;
+        z-index: 10;
+    }
+    #carousel{
+        margin-left: -1rem;
+    }
+    .one{
+        height: fit-content;
+        padding: 2%;
+    }
+    #contlist{
+        margin-left: 2rem;
+        padding-right: 10rem;
+        margin-right: 2rem;
+    }
+    .modal-backdrop {
+        min-width: 100%;
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
+    }
+    #pemodal {
+        padding-left: 20%;
+        padding-bottom: 40%;
+    }
+    #uemodal {
+        padding-left: 20%;
+        padding-bottom: 40%;
+    }
+}
+@media only screen and (max-width: 500px){
+    .one{
+        padding-left: 20%;
+        margin-right: 10%;
+    }
+    #pemodal{
+        margin-left: 0;
+        width: 1100px;
+        padding-bottom: 70%;
+    }
+    #uemodal{
+        margin-left: 0;
+        width: 1100px;
+        padding-bottom: 70%;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .one{
+        padding-left: 20%;
+        margin-right: 10%;
+    }
+
+    #uemodal {
+        margin-left: 0;
+        width: 600px;
+        padding-bottom: 80%;
+    }
+
+}
+
+
+.tabla-espaciada {
+    border-collapse: separate;
+    border-spacing: 20px;
+  }
+  
+.tabla-espaciada td {
+    padding: 3px;
+}
+
+.center-row {
+    text-align: center;
+}
+
