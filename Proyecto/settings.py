@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +32,14 @@ SECRET_KEY = 'django-insecure-puo2ke1gymtcw8eg9zvc23ndqftu8n5kh_6d_pt^xlplhyp2pb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://tecnicas2025.onrender.com']
+ALLOWED_HOSTS = ['tecnicas2025.onrender.com']
+
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+DATABASE_URL = os.getenv('DATABASE_URL')
+
 
 
 # Application definition
@@ -129,14 +142,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-import os
-from dotenv import load_dotenv
+CSRF_TRUSTED_ORIGINS = ['https://tecnicas2025.onrender.com']
 
 
-load_dotenv()
-
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
-DATABASE_URL = os.getenv('DATABASE_URL')
