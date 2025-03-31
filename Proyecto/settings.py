@@ -32,12 +32,12 @@ SECRET_KEY = 'django-insecure-puo2ke1gymtcw8eg9zvc23ndqftu8n5kh_6d_pt^xlplhyp2pb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tecnicas2025.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'tecnicas2025.onrender.com').split(',')
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 
