@@ -142,8 +142,8 @@ USE_TZ = True
 # Configuración de Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dqnlzlzzg',  # Reemplaza con tu cloud_name de Cloudinary
-    'API_KEY': '529127932232822',        # Reemplaza con tu API_KEY
-    'API_SECRET': 'gh4AxBi6U0K-UcZuiUctRPUn8ns'   # Reemplaza con tu API_SECRET
+    'API_KEY': os.getenv('API_KEY'),        # Reemplaza con tu API_KEY
+    'API_SECRET': os.getenv('API_SECRET')   # Reemplaza con tu API_SECRET
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
