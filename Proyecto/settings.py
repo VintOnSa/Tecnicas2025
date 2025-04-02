@@ -13,6 +13,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
+
+
+
 
 
 load_dotenv()
@@ -129,11 +138,24 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+# Configuración de Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dqnlzlzzg',  # Reemplaza con tu cloud_name de Cloudinary
+    'API_KEY': '529127932232822',        # Reemplaza con tu API_KEY
+    'API_SECRET': 'gh4AxBi6U0K-UcZuiUctRPUn8ns'   # Reemplaza con tu API_SECRET
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Configuración para la URL de los medios
+MEDIA_URL = 'https://res.cloudinary.com/dqnlzlzzg/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'media/')
 
@@ -143,5 +165,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://tecnicas2025.onrender.com']
+
+
+
 
 
