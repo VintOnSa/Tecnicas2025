@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     cate_id = models.IntegerField(primary_key=True, unique=True)
-    cate_img = models.CloudinaryField(upload_to='CateImg')
+    cate_img = CloudinaryField('CateImg')
     cate_name = models.CharField(max_length=50, null=False)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Product(models.Model):
     id_cate = models.ForeignKey(Category, on_delete=models.CASCADE)
     desc = models.CharField(max_length=1000,null=False)
     stock = models.PositiveIntegerField(null=False)
-    img = models.CloudinaryField(upload_to='ProdImg')
+    img = CloudinaryField('ProdImg')
     insdate= models.DateField(auto_now_add=True)
 
     def __str__(self):
