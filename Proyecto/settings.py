@@ -13,9 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 
 
@@ -62,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.Store',
     'apps.apiRest',
-    "cloudinary", "cloudinary_storage"
 ]
 
 MIDDLEWARE = [
@@ -140,17 +137,8 @@ USE_TZ = True
 
 
 
-# Configuración de Cloudinary
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dqnlzlzzg',  # Reemplaza con tu cloud_name de Cloudinary
-    'API_KEY': os.getenv('API_KEY'),        # Reemplaza con tu API_KEY
-    'API_SECRET': os.getenv('API_SECRET')   # Reemplaza con tu API_SECRET
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 # Configuración para la URL de los medios
-MEDIA_URL = 'https://res.cloudinary.com/dqnlzlzzg/'
+MEDIA_URL = 'media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -158,7 +146,7 @@ MEDIA_URL = 'https://res.cloudinary.com/dqnlzlzzg/'
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
